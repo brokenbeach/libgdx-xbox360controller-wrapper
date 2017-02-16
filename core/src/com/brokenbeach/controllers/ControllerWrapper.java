@@ -84,12 +84,12 @@ public class ControllerWrapper {
 
     public boolean isRightTriggerPressed() {
 
-        return getRightTriggerAmount() > TRIGGER_CUTOFF;
+        return getRightTriggerValue() > TRIGGER_CUTOFF;
     }
 
     public boolean isLeftTriggerPressed() {
 
-        return getLeftTriggerAmount() > TRIGGER_CUTOFF;
+        return getLeftTriggerValue() > TRIGGER_CUTOFF;
     }
 
     public boolean isRightTriggerJustPressed() {
@@ -102,16 +102,14 @@ public class ControllerWrapper {
         return triggerPressed[LEFT_TRIGGER] && !triggerPressedPrevious[LEFT_TRIGGER];
     }
 
-    public float getLeftTriggerAmount() {
+    public float getLeftTriggerValue() {
 
-        float amount = controller.getAxis(Xbox360Controller.AXIS_LEFT_TRIGGER);
-        return (amount > TRIGGER_CUTOFF) ? amount : 0f;
+        return controller.getAxis(Xbox360Controller.AXIS_LEFT_TRIGGER);
     }
 
-    public float getRightTriggerAmount() {
+    public float getRightTriggerValue() {
 
-        float amount = controller.getAxis(Xbox360Controller.AXIS_RIGHT_TRIGGER);
-        return (amount < -TRIGGER_CUTOFF) ? -amount : 0f;
+        return controller.getAxis(Xbox360Controller.AXIS_RIGHT_TRIGGER);
     }
 
     public boolean isDirectionalPadPressed(int direction) {
